@@ -1,0 +1,16 @@
+{
+  "name": "arxiv-intelligence-mcp",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "arXiv Intelligence MCP — AI agent access to 2M+ preprint papers",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "scripts": {
+    "start": "node src/main.js"
+  },
+  "dependencies": {
+    "apify": "^3.6.0",
+    "fast-xml-parser": "^5.7.3"
+  }
+}

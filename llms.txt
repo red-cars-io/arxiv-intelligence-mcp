@@ -1,0 +1,80 @@
+# arXiv Intelligence MCP Server
+
+Give your AI agent access to 2M+ arXiv preprint papers — search by keyword, author, or category; get paper details; profile authors; track citations and trending research.
+
+## When to Call This MCP
+
+Call arXiv Intelligence MCP when your AI agent needs to:
+- Search academic preprints by keyword, author, or category
+- Retrieve full paper metadata: title, abstract, authors, categories, dates
+- Build author profiles with co-author networks
+- Track forward citation chains for any arXiv paper
+- Monitor trending papers by category week over week
+
+## Tools
+
+### search_papers
+
+Search arXiv papers by keyword, author name, or category expression. Returns ranked results with title, abstract, authors, and categories.
+
+Example AI prompt: "Find recent arXiv papers on diffusion models for code generation, sorted by relevance"
+
+Parameters:
+- query (required): Search query — keyword, author expression (au:"name"), or category expression (cat:cs.AI)
+- maxResults (optional, default 10): Number of results to return
+- sortBy (optional, default "relevance"): Sort by "relevance" or "lastUpdated"
+
+### get_paper_details
+
+Get full metadata for a specific arXiv paper by ID — abstract, all authors, categories, submission date, comments, journal reference, DOI, and links.
+
+Example AI prompt: "Get the full details for arXiv paper 2301.00001 including abstract and author list"
+
+Parameters:
+- paperId (required): arXiv paper ID (e.g., "2301.00001" or "abs/2301.00001")
+
+### get_author_profile
+
+Get all recent papers by an author with their co-author network.
+
+Example AI prompt: "Build a profile for Yoshua Bengio showing his recent papers and top co-authors"
+
+Parameters:
+- authorName (required): Full author name as shown on arXiv
+- maxResults (optional, default 25): Maximum papers to return
+
+### track_citations
+
+Find papers that reference a given arXiv paper (backward) or papers that cite it (forward).
+
+Example AI prompt: "Which papers cite the Transformer attention paper (1706.03762)?"
+
+Parameters:
+- paperId (required): arXiv paper ID to trace citations for
+- citationType (optional, default "both"): "backward", "forward", or "both"
+- maxResults (optional, default 20): Maximum results per direction
+
+### get_trending_papers
+
+Get the most recent papers from a specific arXiv category over the past week or month.
+
+Example AI prompt: "What are the trending papers in cs.AI this week?"
+
+Parameters:
+- category (required): arXiv category (e.g., cs.AI, cs.LG, stat.ML, q-bio, q-fin)
+- timeWindow (optional, default "week"): "week" or "month"
+- maxResults (optional, default 25): Maximum results to return
+
+## Pricing
+
+| Tool | Price |
+|------|-------|
+| search_papers | $0.03 |
+| get_paper_details | $0.01 |
+| get_author_profile | $0.03 |
+| track_citations | $0.05 |
+| get_trending_papers | $0.02 |
+
+## Setup
+
+No API keys required. arXiv's public API is freely accessible.
