@@ -1,21 +1,22 @@
 {
   "title": "arXiv Intelligence MCP",
-  "description": "AI agent access to 2M+ arXiv preprint papers with search, author profiling, and citation tracking",
-  "categories": ["Data science", "Academic research"],
-  "tags": ["arxiv", "academic-papers", "preprints", "citation-tracking", "research", "machine-learning"],
-  "inputSchema": {
-    "type": "object",
-    "properties": {
-      "tool": {
-        "type": "string",
-        "description": "Tool to call",
-        "enum": ["search_papers", "get_paper_details", "get_author_profile", "track_citations", "get_trending_papers"]
-      },
-      "params": {
-        "type": "object",
-        "description": "Tool parameters"
-      }
+  "type": "object",
+  "schemaVersion": 1,
+  "properties": {
+    "tool": {
+      "title": "Tool Name",
+      "type": "string",
+      "description": "MCP tool to call",
+      "enum": ["search_papers", "get_paper_details", "get_author_profile", "track_citations", "get_trending_papers"],
+      "editor": "select",
+      "prefill": "search_papers"
     },
-    "required": ["tool"]
+    "params": {
+      "title": "Parameters (JSON)",
+      "type": "object",
+      "description": "Tool parameters as JSON object",
+      "editor": "json",
+      "prefill": {"query": "transformer attention", "maxResults": 10}
+    }
   }
 }

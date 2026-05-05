@@ -1,15 +1,22 @@
 {
   "actorSpecification": 1,
   "name": "arxiv-intelligence-mcp",
-  "version": "1.0.0",
+  "version": "1.0",
   "title": "arXiv Intelligence MCP — AI Agent Scholar",
-  "description": "Give your AI agent access to 2M+ arXiv preprint papers — search by keyword, author, or category; get paper details; profile authors; track citations and trending research.",
-  "categories": ["Data science", "Academic research"],
-  "tags": ["arxiv", "academic-papers", "preprints", "citation-tracking", "research", "machine-learning", "MCP"],
-  "webServer": {
-    "port": 8080,
-    "enabled": true,
-    "mcpPath": "/mcp"
+  "description": "AI agent access to 2M+ arXiv preprint papers with search, author profiling, citation tracking, and trending research.",
+  "meta": {
+    "templateId": "standby-node"
   },
-  "inputSchema": "./input_schema.json"
+  "input": "../input_schema.json",
+  "readme": "../README.md",
+  "defaultRunOptions": {
+    "memoryMbytes": 512,
+    "timeoutSecs": 120
+  },
+  "usesStandbyMode": true,
+  "webServerMcpPath": "/mcp",
+  "pricing": {
+    "model": "PAY_PER_EVENT"
+  },
+  "categories": ["DATA_SCIENCE", "ACADEMIC_RESEARCH"]
 }
