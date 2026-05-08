@@ -4,7 +4,7 @@
   "type": "module",
   "description": "arXiv Intelligence MCP — AI agent access to 2M+ preprint papers",
   "engines": {
-    "node": ">=18.0.0"
+    "node": ">=20.0.0"
   },
   "scripts": {
     "start": "node src/main.js"

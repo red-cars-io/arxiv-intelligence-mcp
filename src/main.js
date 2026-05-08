@@ -7,8 +7,6 @@ import http from 'http';
 import Apify, { Actor } from 'apify';
 import { XMLParser } from 'fast-xml-parser';
 
-const PORT = process.env.APIFY_PORT || 8080;
-
 // =============================================================================
 // CONSTANTS
 // =============================================================================
@@ -354,10 +352,17 @@ function replyError(code, message) {
 }
 
 // =============================================================================
-// MAIN ENTRY POINT
+// MAIN ENTRY POINT (ts-standby pattern)
 // =============================================================================
 
-if (process.env.APIFY_IS_ATYPICAL_RUN === '1') {
+// Always call Actor.init() once unconditionally
+await Actor.init();
+
+// Check standby AFTER init using env var
+const isStandby = process.env.APIFY_META_ORIGIN === 'STANDBY';
+const PORT = Actor.config.get('standbyPort') || 3000;
+
+if (isStandby) {
   // HTTP server for MCP gateway / health probe
   const server = http.createServer(async (req, res) => {
     const url = new URL(req.url, `http://${req.headers.host}`);
