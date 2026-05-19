@@ -400,7 +400,7 @@ if (isStandby) {
               // PPE charging
               const price = TOOL_PRICES[toolName] || 0.01;
               try {
-                await Actor.charge(price);
+                await Actor.charge({ eventName: toolName, count: 1 });
               } catch (e) {
                 console.error('PPE charge error:', e.message);
               }
@@ -450,7 +450,7 @@ export default {
       const result = await handleTool(tool, params);
       const price = TOOL_PRICES[tool] || 0.01;
       try {
-        await Actor.charge(price);
+        await Actor.charge({ eventName: toolName, count: 1 });
       } catch (e) {
         log.error(`PPE charge error: ${e.message}`);
       }
